@@ -1,1 +1,1 @@
-# goit-js-hw-07
+https://basbassa.github.io/goit-js-hw-07/
