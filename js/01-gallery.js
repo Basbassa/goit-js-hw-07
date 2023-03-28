@@ -1,5 +1,5 @@
-import * as basicLightbox from "./basicLightbox.min.js";
-import { galleryItems } from "./gallery-items.js";
+import * as basicLightbox from "basiclightbox";
+import { galleryItems } from "js/gallery-items";
 
 const galleryList = document.querySelector(".gallery");
 let activeIndex = 0;
