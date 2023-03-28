@@ -32,11 +32,30 @@ function onGalleryItemClick(event) {
 
   activeIndex = galleryItems.findIndex((item) => item.original === sourceUrl);
 
-  const instance = basicLightbox.create(`
+  const instance = basicLightbox.create(
+    `
     <img src="${sourceUrl}" width="800" height="600">
-  `);
+  `,
+    {
+      onShow: (instance) => {
+        // dodanie obsługi klawisza ESC
+        window.addEventListener("keydown", handleKeyDown);
+      },
+      onClose: (instance) => {
+        // usunięcie obsługi klawisza ESC
+        window.removeEventListener("keydown", handleKeyDown);
+      },
+    }
+  );
 
   instance.show(activeIndex);
+
+  // funkcja obsługi klawisza ESC
+  function handleKeyDown(event) {
+    if (event.code === "Escape") {
+      instance.close();
+    }
+  }
 }
 
 console.log(galleryItems);
