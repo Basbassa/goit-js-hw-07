@@ -1,4 +1,3 @@
-import SimpleLightbox from "simplelightbox";
 import { galleryItems } from "./gallery-items.js";
 
 const galleryList = document.querySelector(".gallery");
@@ -23,4 +22,15 @@ const lightbox = new SimpleLightbox(".gallery a", {
   captionDelay: 250,
 });
 
-console.log(galleryItems);
+document.addEventListener("DOMContentLoaded", function () {
+  const galleryLinks = document.querySelectorAll(".gallery__link");
+  galleryLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const imageSource = link.getAttribute("href");
+      lightbox.open({
+        items: { src: imageSource },
+      });
+    });
+  });
+});
